@@ -1,0 +1,50 @@
+﻿
+
+var coinToBet = 0;
+var lastBet = 0;
+var winCount = 0;
+var lossCount = 0;
+var startGame = 0;
+var startCoin = 0;
+var noResult = 0;
+var lastGameNo = 0;
+var specialX = 1;
+
+startCoin = checkWallet(startCoin);
+
+if ((startCoin >= 0.001) && (startCoin < 0.01))
+ coinToBet = 0.00000010  * specialX;
+else if ((startCoin >= 0.01) && (startCoin < 0.1))
+ coinToBet = 0.00000100 * specialX;
+else if ((startCoin >= 0.1) && (startCoin < 1))
+ coinToBet = 0.00001000 * specialX;
+else if (((startCoin >= 1) && (startCoin < 10)))
+ coinToBet = 0.00010000 * specialX; 
+else if ((startCoin >= 10) && (startCoin < 100))
+ coinToBet = 0.00100000 * specialX;  
+else if ((startCoin >= 100) && (startCoin < 1000))
+ coinToBet = 0.01000000 * specialX; 
+else if (startCoin >= 1000)
+ coinToBet = 0.10000000 * specialX; 
+else
+{
+ console.log ("Starting Coin is LOW!: " + startCoin);
+ coinToBet = 0.00000010;
+}
+
+var lastGameNo = $("table.dice_table td:eq(16)").text();
+
+playNow(startCoin, coinToBet, lastBet, startGame, noResult, lastGameNo);
+
+
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+} 
+
+function checkWallet(startCoin){
+ //console.log ("checkWallet... ");
+ var coinString = $("div.dice_select span").text();
