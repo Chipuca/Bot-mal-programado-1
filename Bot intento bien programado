@@ -1,10 +1,23 @@
+// poner nombres a las variables
+let espacio = '\n';
+
 // Usar funciones
+/*function checkWallet(startCoin){
+  return 0.001
+}*/
 
-// While true limpio
+// una funcion para saber lo que tenemos en el bolsillo
+//startCoin = checkWallet(startCoin);
 
+// imprime que llevas
+// console.log(startCoin);
 
+// empezamos definiendo los bet
+// el bet empezara con 10
+ coinToBet = 0.00000010;
 
 while(True){
   // el while esta limpio
+  // 
 
 }
