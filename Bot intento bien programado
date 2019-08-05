@@ -1,5 +1,6 @@
 // poner nombres a las variables
 let espacio = '\n';
+var Multiplicador = 2;
 
 // Usar funciones
 /*function checkWallet(startCoin){
@@ -19,5 +20,18 @@ let espacio = '\n';
 while(True){
   // el while esta limpio
   // 
-
+  coinToBet = coinToBet * 2;
+  // apostamos la cantidad exacta
+  iimPlay("CODE:TAG POS=2 TYPE=INPUT:TEXT ATTR=* CONTENT=" + coinToBet)
+  
+  // si el bet supera una cantidad paramos el programa
+  if( coinToBet > 0.00005){
+    break;
+  
+  }
+  
+  
 }
+
+// alerta termino el programa 
+alert("termino");
