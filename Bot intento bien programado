@@ -1,19 +1,41 @@
+
 // poner nombres a las variables
 let espacio = '\n';
 var Multiplicador = 2;
+var losscount = 0;
+let nadalkeios = '\n';
+var cache = 0;
+
+
+
+
+// con esto se si pierdo
+function Pierdes(){
+
+}
 
 // Usar funciones
 /*function checkWallet(startCoin){
   return 0.001
 }*/
 
+// elegimos 65 porcentaje
 function incrementar(){
-  coinToBet = coinToBet * 2;
+  coinToBet = coinToBet * 4;
   return coinToBet;
 }
 
-funcion decrementar(){
+// normalmente es 50 porcentaje
+/*
+function incrementar(){
+  coinToBet = coinToBet * 2.1;
+  return coinToBet;
+}
+*/
 
+function decrementar(){
+	coinToBet = coinToBet / 2;
+	return coinToBet;
 }
 
 // una funcion para saber lo que tenemos en el bolsillo
@@ -24,28 +46,263 @@ funcion decrementar(){
 
 // empezamos definiendo los bet
 // el bet empezara con 10
- coinToBet = 0.00000010;
+var coinToBet = 0.00000010;
 
-while(True){
+function Win(){
+		iimPlay("CODE:WAIT SECONDS=4")
+		var result = window.content.document.getElementsByClassName("glyphicon-ok")[0].getAttribute('style');
+		if(result=="")
+		{
+			return "Win";
+		}else{
+			return "Loose";
+		}
+		//alert(result);
+}
+
+var win = "";
+
+// incrementar el bet
+  //incrementar();
+  //incrementar();
+  //incrementar();
+
+var wincount = 0;
+var losscount = 0;
+var x = 1.6;
+
+function bid(){
+		//implay
+  	iimPlay("CODE:WAIT SECONDS=1");
+	
+	let modifier = Math.floor(Math.random()*30 + 1);
+	
+	iimPlayCode("SET !ERRORIGNORE YES"
+	+ nadalkeios + "SET !TIMEOUT_PAGE 60"
+	+ nadalkeios + "SET !TIMEOUT_STEP 10"
+	+ nadalkeios + "TAG POS=2 TYPE=INPUT:TEXT ATTR=* CONTENT=" + coinToBet
+				+ nadalkeios + "WAIT SECONDS=0.2"
+				+ nadalkeios + "TAG POS=5 TYPE=INPUT:TEXT ATTR=* CONTENT=" + modifier 
+				+ nadalkeios + "WAIT SECONDS=0.2"
+				+ nadalkeios + "EVENT TYPE=CLICK SELECTOR=\"HTML>BODY>DIV:nth-of-type(5)>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(4)>DIV>BUTTON\" BUTTON=0"
+		
+		
+				
+				
+)
+}
+var i=0;
+function bid2(i){
+		//implay
+  	iimPlay("CODE:WAIT SECONDS=1");
+	
+	let modifier = Math.floor(Math.random()*30 + 1);
+	
+	iimPlayCode("SET !ERRORIGNORE YES"
+	+ nadalkeios + "SET !TIMEOUT_PAGE 60"
+	+ nadalkeios + "SET !TIMEOUT_STEP 10"
+	+ nadalkeios + "TAG POS=2 TYPE=INPUT:TEXT ATTR=* CONTENT=" + i
+				+ nadalkeios + "WAIT SECONDS=0.2"
+				+ nadalkeios + "TAG POS=5 TYPE=INPUT:TEXT ATTR=* CONTENT=" + modifier 
+				+ nadalkeios + "WAIT SECONDS=0.2"
+				+ nadalkeios + "EVENT TYPE=CLICK SELECTOR=\"HTML>BODY>DIV:nth-of-type(5)>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(4)>DIV>BUTTON\" BUTTON=0"
+		
+		
+				
+				
+)
+}
+
+while(true){
   // el while esta limpio
-  // 
+  //
+	
+		//bid();
+	
+	if(losscount == 0){
+		bid();
+		
+	}
+   
+	if(losscount == 1){
+		bid2(0.1);
+		
+	}
+	
+	if(losscount == 2){
+		bid2(0.4);
+		
+	}
+	
+	if(losscount == 3){
+		bid2(1.6);
+		
+	}
+	
+	if(losscount > 4){
+		
+		bid2(x);
+		x = x * 4;
+		
+	}
+	
+	
+	
+	//cache = 0;
+	
+	
+  	
   
-   // incrementar el bet
-  incrementar();
+  
+  // decrementar el bet
+  //decrementar();
+  iimPlay("CODE:WAIT SECONDS=1");
+  
+  //si pierdo incremento, si gano decremento
+  if(Win() == "Win"){
+	  wincount++;
+	  if(wincount>1){
+		  decrementar();
+		  
+		  // hacer un loop en el momento que gano no hago nada cuando pierdo evaluo dos veces
+		  // agregar dos loops anidados.
+		  wincount = 0;
+	  }
+	  losscount = 0;
+	//decrementar();
+	  
+  }else{
+	  losscount++;
+	  incrementar();
+	  
+	
+  }
+  
+  
+  
+  
+  //iimPlay("CODE:WAIT SECONDS=0.2")
   
   // apostamos la cantidad exacta
-  iimPlay("CODE:TAG POS=2 TYPE=INPUT:TEXT ATTR=* CONTENT=" + coinToBet)
-  
+  //iimPlay("CODE:TAG POS=2 TYPE=INPUT:TEXT ATTR=* CONTENT=" + coinToBet)
  
   
   // si el bet supera una cantidad paramos el programa
-  if( coinToBet > 0.00005){
-    break;
+  if( coinToBet > 0.1){
+		if(Win() == "Win"){
+			iimPlay("CODE:WAIT SECONDS=2")
+			coinToBet = 0.00000080;
+		}
+		if(losscount>3){
+			iimPlay("CODE:WAIT SECONDS=2")
+			coinToBet = 0.00000080;
+			
+		}
   
   }
+  
+  // si pierdo incremento
+  
+  // si gano mas de varias veces decremento
+  
+  // si pierdo muchas veces decremento
   
   
 }
 
+
+
+
+
+
+
+
+/*if(losscount == 0){
+		bid();
+		
+	}
+   
+	if(losscount == 1){
+		bid2(0.1);
+		
+	}
+	
+	if(losscount == 2){
+		bid2(0.4);
+		
+	}
+	
+	if(losscount == 3){
+		bid2(1.6);
+		
+	}
+	
+	if(losscount > 4){
+		
+		bid2(x);
+		x = x * 2;
+		
+	}*/
+
+/*el loop
+while(true){
+			  if(Win() == "Win"){
+				  
+			  }else{
+				  var j=0;
+				  while(true){
+					  if(Win() == "Win"){
+							break;
+					  }else{
+						  if(j == 0){
+								bid();
+								
+							}
+						   
+							if(j == 1){
+								bid2(0.1);
+								
+							}
+							
+							if(j == 2){
+								bid2(0.4);
+								
+							}
+							
+							if(j == 3){
+								bid2(1.6);
+								
+							}
+							
+							if(j > 4){
+								
+								bid2(x);
+								x = x * 2;
+								
+							}
+					  }
+				  }
+				  break;
+			  }
+			  
+		  }*/
+
+
+
+/*
 // alerta termino el programa 
 alert("termino");
+
+
+iimPlay("CODE:WAIT SECONDS=1")
+  
+  // apostamos la cantidad exacta
+  iimPlay("CODE:TAG POS=2 TYPE=INPUT:TEXT ATTR=* CONTENT=" + coinToBet)
+  
+  // timer
+  iimPlay("CODE:WAIT SECONDS=4")
+  
+  // bideamos
+  iimPlay("CODE:EVENT TYPE=CLICK SELECTOR=\"HTML>BODY>DIV:nth-of-type(5)>DIV>DIV>DIV:nth-of-type(2)>DIV>DIV>DIV>DIV>DIV>DIV:nth-of-type(4)>DIV>BUTTON\" BUTTON=0")
+  
+*/
