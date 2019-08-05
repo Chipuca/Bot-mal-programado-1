@@ -93,7 +93,7 @@ while(true) {
 			         m++;
 			         iimPlay("CODE:WAIT SECONDS=4");
 			         
-			         var resultt = window.content.document.getElementsByClassName("glyphicon-ok")[0].getAttribute('style');
+			         var resultt = window.content.document.getElementsByClassName("glyphicon-ok")[0].getAttribute('');
 				//alert(result);
 				// iimPlay("CODE:WAIT SECONDS=2");
 				//break;
@@ -350,7 +350,7 @@ while(true) {
 			         i++;
 			         iimPlay("CODE:WAIT SECONDS=4");
 			         
-			         var result = window.content.document.getElementsByClassName("glyphicon-ok")[0].getAttribute('style');
+			         var result = window.content.document.getElementsByClassName("glyphicon-ok")[0].getAttribute('');
 				//alert(result);
 				iimPlay("CODE:WAIT SECONDS=2");
 				// iimPlay("CODE:WAIT SECONDS=2");
