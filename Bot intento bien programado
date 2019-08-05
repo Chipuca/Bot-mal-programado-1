@@ -7,6 +7,15 @@ var Multiplicador = 2;
   return 0.001
 }*/
 
+function incrementar(){
+  coinToBet = coinToBet * 2;
+  return coinToBet;
+}
+
+funcion decrementar(){
+
+}
+
 // una funcion para saber lo que tenemos en el bolsillo
 //startCoin = checkWallet(startCoin);
 
@@ -20,9 +29,14 @@ var Multiplicador = 2;
 while(True){
   // el while esta limpio
   // 
-  coinToBet = coinToBet * 2;
+  
+   // incrementar el bet
+  incrementar();
+  
   // apostamos la cantidad exacta
   iimPlay("CODE:TAG POS=2 TYPE=INPUT:TEXT ATTR=* CONTENT=" + coinToBet)
+  
+ 
   
   // si el bet supera una cantidad paramos el programa
   if( coinToBet > 0.00005){
